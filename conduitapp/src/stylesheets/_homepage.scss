@@ -1,0 +1,48 @@
+.hero{
+  padding: 0;
+}
+.hero-bannar {
+  padding: 4rem 0;
+  background: $primary;
+  color: $white;
+  font-family: $titillium;
+  .heading {
+    font-size :5rem;
+  }
+  .sub-heading {
+    font-family: $sanspro;
+    font-weight: 400;
+  }
+}
+
+.content-container{
+  width: 100%;
+  padding: 2% 11%;
+  min-height: 100vh;
+  .articles-container{
+    flex:  0 1 75%;
+    height: 100%;
+    
+  }
+  .sidebar-container{
+    flex :0 1 20%;
+    height: 100%;
+  
+  }
+
+  .active-feed{
+    border-bottom: .1rem solid $primary;
+    color: $primary;
+    font-weight: 600;
+  }
+  .user-feed-container{
+    border-bottom: .1rem solid #ddd;
+    li{
+      display: inline-block;
+      margin-right:  2.4rem ;
+      font-size: 1.5rem;
+    }
+  }
+}
+
+

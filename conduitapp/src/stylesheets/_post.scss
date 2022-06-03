@@ -1,0 +1,72 @@
+.readmorepost{
+    padding: 3rem 0;
+    border-bottom: .1rem solid #ddd;
+    figure {
+        img{
+            border-radius: 50%;
+            width: 4rem;
+            height: 4rem;
+            object-fit: cover;
+        }
+    }
+    .username-date{
+        margin-left: 1rem;
+        h4{
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: $primary;
+        }
+        p{
+            color: $dark-gray;
+            font-size: 1.4rem;
+        }
+    }
+    .post-heading{
+        margin: 1rem 0;
+        font-size: 2.4rem;
+    }
+    .post-description{
+        font-size: 1.6rem;
+        color: $light-dark;
+    }
+
+    button{
+        border: none;
+        background-color: transparent;
+        margin: 1rem 0;
+        a{
+            color: $dark-gray;
+        }
+    }
+    .post-tag{
+        font-size: 1.4rem;
+        padding: .5rem .8rem;
+        border: .1rem solid #ddd;
+        border-radius: 2rem;
+        color: #aaa;
+    }   
+    .like-btn{
+        padding:.5rem 1rem;
+        border-radius: .6rem;
+        color: $primary;
+        border: .1rem solid $primary;
+        font-size: 1.5rem;
+        i{
+            font-size: 1rem;
+            display: inline-block;
+            margin-right:.5rem;
+        }
+        &:hover{
+            color: #fff;
+            background: $primary;
+        }
+    }
+    #heart-icon{
+        margin-right: .3rem;
+        font-size: 1.2rem;
+    }
+
+    .tertiary-btn:hover{
+        color: $primary;
+    }
+}

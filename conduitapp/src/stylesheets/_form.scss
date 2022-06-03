@@ -1,0 +1,40 @@
+.user-form {
+  margin: 5rem 0;
+  width: 100%;
+  padding: 2rem;
+  h5{
+    color: $primary;
+    font-weight: 400;
+    margin: 1rem 0;
+  }
+}
+.userinput-container {
+  width: 40%;
+  .form-group {
+    margin: 1.5rem 0;
+    input {
+      display: inline-block;
+      width: 100%;
+      padding: 1rem;
+      border: 0.1rem solid #ddd;
+      border-radius: 0.4rem;
+      font-size: 1.6rem;
+    }
+    &::placeholder {
+      font-family: $sanspro;
+    }
+
+    &:focus{
+      outline: none;
+      border: .1rem solid #719ECE;
+    }
+  }
+  .btn {
+    background: $primary;
+    color: #fff;
+    padding: 1.3rem 3.2rem;
+    border-radius: 0.6rem;
+    border: none;
+    font-size: 1.6rem;
+  }
+}
