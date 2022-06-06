@@ -37,7 +37,7 @@ export default function Post(props) {
       <p className="post-description">{post.description}</p>
       <div className="readmore-tags flex-row">
         <button className="tertiary-btn">
-          <Link to={"/article/" + post.slug}>Readmore....</Link>
+          <Link to={`/article/${post.slug}`}>Readmore....</Link>
         </button>
         <ul className="tags-containers">
           <li className="post-tag">pubg</li>

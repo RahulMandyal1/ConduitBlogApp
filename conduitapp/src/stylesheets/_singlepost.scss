@@ -1,0 +1,36 @@
+.singlepost-container {
+  width: 100%;
+  padding: 0;
+  .articlebody-container {
+    padding: 0 11%;
+    margin: 2rem 0;
+    p{
+        font-size: 1.8rem;
+
+    }
+  }
+}
+.article-bannar-container {
+  padding: 4% 11%;
+  background: #333333;
+  color: #fff;
+  .article-bannar {
+    h2 {
+      font-size: 4rem;
+      text-transform: capitalize;
+      margin: 1rem 0;
+    }
+  }
+}
+
+.userinfo-container {
+  img {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .username-date{
+      margin-left:1rem;
+  }
+}

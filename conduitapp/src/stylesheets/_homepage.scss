@@ -1,4 +1,4 @@
-.hero{
+.hero {
   padding: 0;
 }
 .hero-bannar {
@@ -7,7 +7,7 @@
   color: $white;
   font-family: $titillium;
   .heading {
-    font-size :5rem;
+    font-size: 5rem;
   }
   .sub-heading {
     font-family: $sanspro;
@@ -15,34 +15,43 @@
   }
 }
 
-.content-container{
+.content-container {
   width: 100%;
   padding: 2% 11%;
   min-height: 100vh;
-  .articles-container{
-    flex:  0 1 75%;
+  .articles-container {
+    flex: 0 1 75%;
     height: 100%;
-    
   }
-  .sidebar-container{
-    flex :0 1 20%;
+  .sidebar-container {
+    flex: 0 1 20%;
     height: 100%;
-  
   }
 
-  .active-feed{
-    border-bottom: .1rem solid $primary;
+  .active-feed {
+    border-bottom: 0.4rem solid $primary;
     color: $primary;
     font-weight: 600;
   }
-  .user-feed-container{
-    border-bottom: .1rem solid #ddd;
-    li{
+  .user-feed-container {
+    border-bottom: 0.1rem solid #ddd;
+    li {
       display: inline-block;
-      margin-right:  2.4rem ;
+      margin-right: 2.4rem;
       font-size: 1.5rem;
     }
   }
 }
 
+// pagination styling starts from here
 
+.pagination-container {
+  margin: 2rem 0;
+  span {
+    display: inline-block;
+    @extend .center;
+    padding: 0.8rem 1.2rem;
+    border: .1rem solid $primary;
+    cursor:pointer;
+  }
+}

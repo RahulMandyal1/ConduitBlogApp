@@ -4,6 +4,7 @@ import Header from "./Header";
 import Homepage from "./Homepage";
 import Signin from "./Signin";
 import Signup from "./Signup";
+import Singlepost from "./Singlepost";
 export default class App extends Component {
   render() {
     return (
@@ -17,7 +18,10 @@ export default class App extends Component {
             <Signup />
           </Route>
           <Route path="/login">
-            <Signin/>
+            <Signin />
+          </Route>
+          <Route path="/article">
+            <Singlepost />
           </Route>
         </>
       </Switch>

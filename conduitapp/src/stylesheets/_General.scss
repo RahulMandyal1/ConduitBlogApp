@@ -21,43 +21,37 @@ $sanspro: "Source Sans Pro", sans-serif;
 html {
   font-size: 62.5%;
 }
-
 section {
   padding: 0 11%;
 }
-
 body {
   font-family: $sanspro;
   font-size: 1.6rem;
 }
-
-ul{
+ul {
   list-style: none;
 }
-//  all the common used classes in this whole project
+
+//  all the common used flex classes to make layout 
 .flex-row {
   display: flex;
   justify-content: space-between;
 }
-
 .flex-row-center {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
 .flex-col {
   display: flex;
   flex-direction: column;
 }
-
 .center {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-
 .flex-end {
   display: flex;
   justify-content: flex-end;
@@ -65,14 +59,20 @@ ul{
 a {
   text-decoration: none;
 }
-
+// active element styles 
 .active-menu {
   color: $primary;
+}
+.active{
+  background: $primary;
+  color: #fff;
+}
+.error{
+  color: rgb(195, 13, 13);
 }
 .text-center {
   text-align: center;
 }
-
 // All heading sizes
 h1 {
   font-size: 3.6rem;
@@ -89,4 +89,3 @@ h4 {
 h5 {
   font-size: 1.8rem;
 }
-

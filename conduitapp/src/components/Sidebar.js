@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { tagsURL } from "../utils/constant";
 import Loader from "./Loader";
-import { Link } from "react-router-dom";
 export default class Sidebar extends Component {
   state = {
     tagsData: null,
@@ -35,22 +34,24 @@ export default class Sidebar extends Component {
       return <h4 className="text-center">{error}</h4>;
     }
     return (
-      <div className="sidebar-container">
-        <h4>Popular tags</h4>
-        {tagsData === null ? (
-          <Loader />
-        ) : (
-          <ul className="tags-container">
-            {tagsData.tags.map((tag) => {
-              return (
-                <li key={tag}>
-                  <Link to="/tags">{tag}</Link>
-                </li>
-              );
-            })}
-          </ul>
-        )}
-      </div>
+      <aside className="sidebar-container">
+        <div className="sidebar-container">
+          <h4>Popular tags</h4>
+          {tagsData === null ? (
+            <Loader />
+          ) : (
+            <ul className="tags-container">
+              {tagsData.tags.map((tag) => {
+                return (
+                  <li key={tag} value={tag} onClick ={this.props.getTagArticles}>
+                  {tag}
+                  </li>
+                );
+              })}
+            </ul>
+          )}
+        </div>
+      </aside>
     );
   }
 }

@@ -11,18 +11,18 @@ export default function Header() {
         </div>
         <ul className="navmenus-container flex-row-center">
           <li>
-            <NavLink to="/" exact activeClassName="active-menu">
+            <NavLink to="/" exact activeClassName="active-link">
               Home
             </NavLink>
           </li>
           <li>
-            <NavLink to="/register" activeClassName="active-menu">
-              Signin
+            <NavLink to="/register" activeClassName="active-link">
+              Signup
             </NavLink>
           </li>
           <li>
-            <NavLink to="/login" activeClassName="active-menu">
-              Signup
+            <NavLink to="/login" activeClassName="active-link">
+              Signin
             </NavLink>
           </li>
         </ul>
