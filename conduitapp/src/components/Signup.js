@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import { lengthValidation } from "../utils/lengthValidation";
 import { validateEmail } from "../utils/emailValidation";
 import { signupURL } from "../utils/constant";
-export default class Signup extends Component {
+import { withRouter } from "react-router-dom";
+import Signin from "./Signin";
+class Signup extends Component {
   state = {
     email: "",
     password: "",
@@ -58,39 +60,31 @@ export default class Signup extends Component {
       body: JSON.stringify({ user: { username, email, password } }),
     })
       .then((res) => {
-        console.log(res);
         if (!res.ok) {
-          res.json().then((data) =>
-            this.setState({
-              errors: {
-                username: data.errors.username,
-                email: data.errors.email,
-                password: data.errors.password,
-              },
-            })
-          );
+          return res.json().then((data) => {
+            console.log(data);
+            return Promise.reject(data);
+          });
         }
         return res.json();
       })
       .then((data) => {
-        console.log(
-          " this is the data coming  as a response from the api",
-          data
-        );
+        this.props.updateUser(data.user);
+        this.setState({ email: "", username: "", password: "" });
+        this.props.history.push("/");
       })
-      .catch((error) => {
-        console.log("somethign went wrong here ...");
+      .catch((data) => {
+        this.setState({
+          errors: {
+            username: data.errors.username,
+            email: data.errors.email,
+          },
+        });
       });
   };
 
   render() {
     const { username, email, password } = this.state.errors;
-    console.log(
-      " these are all the errors that are occured now",
-      username,
-      email,
-      password
-    );
     return (
       <section className="form-container container">
         <div className=" center user-form">
@@ -141,3 +135,5 @@ export default class Signup extends Component {
     );
   }
 }
+
+export default withRouter(Signup);

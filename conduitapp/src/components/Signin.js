@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { loginURL } from "../utils/constant";
 import { validateEmail } from "../utils/emailValidation";
 import { lengthValidation } from "../utils/lengthValidation";
-export default class Signin extends Component {
+import { withRouter } from "react-router-dom";
+class Signin extends Component {
   state = {
     email: "",
     password: "",
@@ -50,28 +51,26 @@ export default class Signin extends Component {
     })
       .then((res) => {
         if (!res.ok) {
-          res.json().then((data) =>
-            this.setState((previousState) => {
-              return {
-                ...previousState,
-                errors: {
-                  ...previousState.errors,
-                  email: "email or password is incorrect !!",
-                },
-              };
-            })
-          );
+          return res.json().then((data) => {
+            return Promise.reject(data);
+          });
         }
         return res.json();
       })
-      .then((data) => {
-        console.log(
-          " this is the data coming  as a response from the api",
-          data
-        );
+      .then(({ user }) => {
+        this.props.updateUser(user);
+        this.props.history.push("/");
       })
       .catch((error) => {
-        console.log("somethign went wrong here ...");
+        this.setState((previousState) => {
+          return {
+            ...previousState,
+            errors: {
+              ...previousState.errors,
+              email: "email or password is incorrect !!",
+            },
+          };
+        });
       });
   };
 
@@ -118,3 +117,5 @@ export default class Signin extends Component {
     );
   }
 }
+
+export default withRouter(Signin);

@@ -1,0 +1,31 @@
+.pagenotfoundcontainer{
+    font-family: $poppins;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 80vh;
+    h2{
+        font-size: 8rem;
+        color: #444;
+    }
+    h3{
+        color: #444;
+        margin: 1rem 0;
+    }
+    h5{
+        margin: 1rem;
+    }
+    .home-btn{
+        padding: .8rem 3.2rem;
+        background: $primary;
+        border: none;
+        font-size: 1.5rem;
+        border-radius:2rem ;
+        a{
+            color: #fff;
+        }
+    }
+    h5{
+        color: #666;
+    }
+}

@@ -4,4 +4,15 @@ const tagsURL = ROOT_URL + "tags";
 const articleURL = articlesURL + "/:slug";
 const signupURL = ROOT_URL + "users";
 const loginURL = ROOT_URL + "users/login";
-export { ROOT_URL, articlesURL, tagsURL, signupURL, loginURL, articleURL };
+const localStorageKey = "blog_user";
+const userVerifyURL = ROOT_URL + "user";
+export {
+  ROOT_URL,
+  articlesURL,
+  tagsURL,
+  signupURL,
+  loginURL,
+  articleURL,
+  localStorageKey,
+  userVerifyURL,
+};

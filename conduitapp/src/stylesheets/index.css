@@ -143,6 +143,11 @@ h5 {
   font-weight: 500;
 }
 
+.navigation-container .navmenus-container li i {
+  margin-right: .5rem;
+  color: #aaa;
+}
+
 .navigation-container .navmenus-container li a {
   color: #aaa;
 }
@@ -464,5 +469,47 @@ h5 {
 
 .userinfo-container .username-date {
   margin-left: 1rem;
+}
+
+.pagenotfoundcontainer {
+  font-family: "Poppins", sans-serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  height: 80vh;
+}
+
+.pagenotfoundcontainer h2 {
+  font-size: 8rem;
+  color: #444;
+}
+
+.pagenotfoundcontainer h3 {
+  color: #444;
+  margin: 1rem 0;
+}
+
+.pagenotfoundcontainer h5 {
+  margin: 1rem;
+}
+
+.pagenotfoundcontainer .home-btn {
+  padding: .8rem 3.2rem;
+  background: #5cb85c;
+  border: none;
+  font-size: 1.5rem;
+  border-radius: 2rem;
+}
+
+.pagenotfoundcontainer .home-btn a {
+  color: #fff;
+}
+
+.pagenotfoundcontainer h5 {
+  color: #666;
 }
 /*# sourceMappingURL=index.css.map */
