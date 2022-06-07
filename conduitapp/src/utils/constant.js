@@ -6,6 +6,7 @@ const signupURL = ROOT_URL + "users";
 const loginURL = ROOT_URL + "users/login";
 const localStorageKey = "blog_user";
 const userVerifyURL = ROOT_URL + "user";
+const newArticle = ROOT_URL+"articles";
 export {
   ROOT_URL,
   articlesURL,
@@ -15,4 +16,5 @@ export {
   articleURL,
   localStorageKey,
   userVerifyURL,
+  newArticle
 };

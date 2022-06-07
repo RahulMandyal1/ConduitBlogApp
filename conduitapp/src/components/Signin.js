@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { loginURL } from "../utils/constant";
-import { validateEmail } from "../utils/emailValidation";
-import { lengthValidation } from "../utils/lengthValidation";
+import { lengthValidation } from "../utils/validation";
+import  {validateEmail } from "../utils/validation";
 import { withRouter } from "react-router-dom";
 class Signin extends Component {
   state = {
@@ -41,7 +41,6 @@ class Signin extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     let { username, password, email } = this.state;
-    console.log(username, password, email);
     fetch(loginURL, {
       method: "POST",
       headers: {

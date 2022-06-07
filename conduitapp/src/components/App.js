@@ -11,10 +11,12 @@ import NotFound from "./NotFound";
 import NewPost from "./NewPost";
 import Setting from "./Setting";
 import UserProfile from "./UserProfile";
+import { TbHotelService } from "react-icons/tb";
+import Profile from "./Profile";
 export default class App extends Component {
   state = {
     isLoggedIn: false,
-    user: null,
+    user: undefined,
     isVerified: true,
   };
 
@@ -59,9 +61,12 @@ export default class App extends Component {
       <>
         <Header isLoggedIn={this.state.isLoggedIn} />
         {this.state.isLoggedIn ? (
-          <AuthenticatedApp updateUser={this.updateUser} />
+          <AuthenticatedApp
+            updateUser={this.updateUser}
+            user={this.state.user}
+          />
         ) : (
-          <UnauthenticatedApp />
+          <UnauthenticatedApp updateUser={this.updateUser} />
         )}
       </>
     );
@@ -92,24 +97,25 @@ function UnauthenticatedApp(props) {
   );
 }
 
-function AuthenticatedApp() {
+function AuthenticatedApp(props) {
   return (
     <>
       <Switch>
         <Route path="/" exact>
           <Homepage />
         </Route>
-        <Route path="/article">
-          <Singlepost />
-        </Route>
         <Route path="/article/new">
-          <NewPost />
+          <NewPost token={props.user.token} />
         </Route>
         <Route path="/settings">
-          <Setting />
+          <Setting user={props.user} />
         </Route>
         <Route path="/users/profile">
           <UserProfile />
+        </Route>
+        <Route path="/article/:slug" component={Singlepost} />
+        <Route path="/profile">
+          <Profile user={props.user} />
         </Route>
         <Route path="*">
           <NotFound />

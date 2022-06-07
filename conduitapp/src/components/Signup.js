@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import { lengthValidation } from "../utils/lengthValidation";
-import { validateEmail } from "../utils/emailValidation";
+import { lengthValidation } from "../utils/validation";
+import  {validateEmail } from "../utils/validation";
 import { signupURL } from "../utils/constant";
 import { withRouter } from "react-router-dom";
-import Signin from "./Signin";
 class Signup extends Component {
   state = {
     email: "",

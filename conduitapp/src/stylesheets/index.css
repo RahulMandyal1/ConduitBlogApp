@@ -372,7 +372,7 @@ h5 {
   margin: 1.5rem 0;
 }
 
-.userinput-container .form-group input {
+.userinput-container .form-group input, .userinput-container .form-group textarea {
   display: inline-block;
   width: 100%;
   padding: 1rem;
