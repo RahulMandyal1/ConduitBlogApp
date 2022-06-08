@@ -46,3 +46,30 @@
 }
 
 
+<<<<<<< Updated upstream
+=======
+.pagination-container {
+  margin: 2rem 0;
+  span {
+    display: inline-block;
+    @extend .center;
+    padding: 0.8rem 1.2rem;
+    border: 0.1rem solid $primary;
+    cursor: pointer;
+  }
+}
+
+// made responsive this page
+@media screen and (max-width: 992px) {
+  .content-container {
+    padding: 2rem;
+    flex-direction: column;
+    .articles-container {
+      flex: 1 1 100%;
+    }
+    .sidebar-container {
+      flex: 1 1 100%;
+    }
+  }
+}
+>>>>>>> Stashed changes

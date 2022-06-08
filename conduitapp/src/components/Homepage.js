@@ -4,6 +4,8 @@ import Bannar from "./Bannar";
 import FeedNav from "./FeedNav";
 import Posts from "./Posts";
 import Sidebar from "./Sidebar";
+
+
 export default class Homepage extends Component {
   state = {
     articles: null,
@@ -47,10 +49,26 @@ export default class Homepage extends Component {
         <Bannar />
         {/* <FeedNav feed={this.state.feed} /> */}
         <div className="content-container flex-row">
+<<<<<<< Updated upstream
           <Posts articles={articles} error={error} />
           <aside className="sidebar-container">
             <Sidebar />
           </aside>
+=======
+          <div className="articles-container">
+            <FeedNav activeTab={activeTab} emptyTab={this.emptyTab} />
+            <Posts
+              data={articles}
+              error={error}
+            />
+            <Pagination
+              totalArticles={totalArticles}
+              activePage={activePage}
+              nextPage={this.getNextPage}
+            />
+          </div>
+          <Sidebar getTagArticles={this.getTagRelatedArticles} />
+>>>>>>> Stashed changes
         </div>
       </section>
     );

@@ -7,6 +7,7 @@
 
 // all the color palletes used in this whole project
 $primary: #5cb85c;
+// $primary : #138666;
 $secondary: #f3f3f3;
 $light-dark: rgba(0, 0, 0, 0.3);
 $light-gray: #aaa;
@@ -66,8 +67,13 @@ a {
   text-decoration: none;
 }
 
+<<<<<<< Updated upstream
 .active-menu {
   color: $primary;
+=======
+.error{
+  color: rgb(195, 13, 13);
+>>>>>>> Stashed changes
 }
 .text-center {
   text-align: center;
@@ -90,3 +96,39 @@ h5 {
   font-size: 1.8rem;
 }
 
+<<<<<<< Updated upstream
+=======
+// other common stylign here 
+.section-heading{
+  margin: 1rem 0;
+  font-size: 3.2rem;
+  font-family: $titillium;
+}
+
+.activepage{
+  background-color: $primary;
+  color: #fff;
+  font-weight: 600;
+}
+
+
+// made responsive this page 
+@media  screen and (max-width: 992px) {
+  html{
+    font-size: 60%;
+  }
+  section {
+    padding: 0  5%;
+  } 
+}
+
+// below 768px
+@media  screen and (max-width: 768px) {
+  html{
+    font-size: 50%;
+  }
+  section {
+    padding: 0  2%;
+  } 
+}
+>>>>>>> Stashed changes

@@ -1,0 +1,65 @@
+.profile-container{
+    padding:  0;
+}
+// profile bannar stylign start here 
+.profilebannar-container{
+    padding: 2% 14%;
+    background: #f3f3f3;
+    img{
+        width: 10rem;
+        height: 10rem;
+        border-radius: 50%; 
+    }
+    .username{
+        margin: 1rem 0;
+    }
+}
+
+// all the post container
+.otherpost-container{
+    padding: 0 14%;
+    margin: 2rem 0;
+}
+
+.profile-nav{
+    li{
+        display: inline-block;
+        background-color: #f3f3f3;
+        padding: .5rem;
+        margin-right:1rem;
+    }
+    border-bottom: .1rem solid #ddd;
+}
+
+.btn-secondary{
+    padding: .8rem 1.6rem;
+    border-radius: .6rem;
+    border: .1rem solid #ddd;
+    background-color: $primary;
+    font-family: $poppins;
+    font-weight: 500;
+    @extend .flex-row-center;
+    a{
+        color: #fff;
+    }
+}
+
+.follow{
+    background: transparent;
+    border: .1rem solid #000;
+    color: #000;
+    &:hover{
+        background: $primary;
+        color: #fff;
+        border: none;
+    }
+}
+
+
+.navmenus-container {
+    .active-menu{
+        border-bottom: .4rem solid $dark-gray;
+        background-color: $primary;
+        color: #fff;
+    }   
+}

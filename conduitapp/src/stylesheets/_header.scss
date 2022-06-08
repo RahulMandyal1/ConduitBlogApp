@@ -9,6 +9,11 @@
   }
   .navmenus-container {
     list-style-type: none;
+    svg{
+      display: inline-block;
+      margin-right: .5rem;
+      color: $light-gray;
+    }
     li {
       margin: 0 1rem;
       font-size: 1.6rem;
@@ -18,8 +23,26 @@
       }
     }
   }
+<<<<<<< Updated upstream
   .active-menu{
       color: $primary;
       font-weight: 500;
+=======
+}
+
+.navmenus-container{
+  .active{
+    color  :#687087 !important;
+    font-weight: 600;
+  }
+}
+
+
+
+// made responsive this page
+@media screen and (max-width: 992px) {
+  .navigation-container{
+    padding: 2rem;
+>>>>>>> Stashed changes
   }
 }
