@@ -16,11 +16,12 @@ class Profile extends Component {
     isfollowing: null,
   };
 
+  //as componet gets mounted get the user profile
   componentDidMount() {
     this.getProfile();
   }
 
-  //on update it will only run if user articles is not fetched
+  //get all the user releated data or articles
   componentDidUpdate() {
     if (!this.state.articles) {
       this.getProfileArticles();
@@ -87,7 +88,7 @@ class Profile extends Component {
       });
   };
 
-  //once user clicks on this button change the tab from my articles to favourite articles
+  //change tab 
   handleClick = ({ target }) => {
     const { id } = target;
     this.setState({

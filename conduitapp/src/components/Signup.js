@@ -47,7 +47,8 @@ class Signup extends Component {
     });
   };
 
-  //  resposible for user login
+
+  //  resposible for user login or creating user account
   handleSubmit = (event) => {
     event.preventDefault();
     let { username, password, email } = this.state;
@@ -71,7 +72,7 @@ class Signup extends Component {
       .then((data) => {
         this.props.updateUser(data.user);
         this.setState({ email: "", username: "", password: "" });
-        this.props.history.push("/");
+        this.props.navigate("/");
       })
       .catch((data) => {
         this.setState({

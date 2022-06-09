@@ -11,6 +11,7 @@ export default class Post extends Component {
     article: this.props.article,
   };
 
+  
   increaseLike = (event, slug) => {
     fetch(articlesURL + `/${slug}/favorite`, {
       method: "POST",

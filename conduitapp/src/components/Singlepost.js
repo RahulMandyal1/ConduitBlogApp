@@ -14,6 +14,7 @@ class Singlepost extends Component {
     currentUser: this.props.user,
   };
 
+  // get article as soon as component is mounted 
   componentDidMount() {
     let slug = this.props.params.slug;
     fetch(articlesURL + "/" + slug)
@@ -30,6 +31,7 @@ class Singlepost extends Component {
       });
   }
 
+  // delete user article  
   deleteArticle = () => {
     let article = this.props.params.slug;
     fetch(articlesURL + "/" + article, {

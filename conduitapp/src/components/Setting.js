@@ -26,7 +26,7 @@ class Setting extends Component {
   handleChange = ({ target }) => {
     const { name, value } = target;
 
-    //validate the email
+    //validate user email
     if (name === "email") {
       this.setState({
         errors: {
@@ -35,7 +35,7 @@ class Setting extends Component {
       });
     }
 
-    //validate   the password
+    //validate user  password
     if (name === "password") {
       this.setState({
         errors: {
@@ -53,7 +53,6 @@ class Setting extends Component {
       });
     }
 
-    // also change the state once the user updated any fields
     this.setState((previousState) => {
       return {
         ...previousState,
@@ -62,6 +61,7 @@ class Setting extends Component {
     });
   };
 
+  // updates user profile 
   handleSubmit = (event) => {
     event.preventDefault();
     const { username, email, bio, image, password } = this.state;

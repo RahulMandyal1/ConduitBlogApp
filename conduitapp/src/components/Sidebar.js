@@ -8,6 +8,7 @@ export default class Sidebar extends Component {
     error: "",
   };
 
+  // get all the tags as  the component mounted
   componentDidMount() {
     fetch(tagsURL)
       .then((res) => {

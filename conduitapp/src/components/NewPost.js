@@ -41,14 +41,16 @@ class NewPost extends Component {
     });
   };
 
+  //resposible for creating article
   createArticle = (event) => {
     event.preventDefault();
     const { title, description, body, tagList } = this.state.article;
     const article = this.state.article;
-    article.tagList = article.tagList.split(",");
-
+    if (article.tagList) {
+      article.tagList = article.tagList.split(",");
+    }
     // all the fields all required
-    if (!title && !description && !body && !tagList) {
+    if (!title || !description || !body || !tagList) {
       return this.setState({
         errors: {
           requiredall: " all fields are required ",

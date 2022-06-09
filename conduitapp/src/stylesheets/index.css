@@ -228,13 +228,16 @@ h5 {
       flex: 1 1 100%; }
 
   .hero-bannar {
-    padding: 6rem 0; } }
+    padding: 6rem 0; }
+
+  .pagination-container {
+    margin: 2rem 0; } }
 @media screen and (max-width: 480px) {
   h2 {
     font-size: 2rem; } }
 .readmorepost {
   padding: 3rem 0;
-  border-bottom: .1rem solid #ddd; }
+  border-bottom: 0.1rem solid #ddd; }
   .readmorepost figure img {
     border-radius: 50%;
     width: 4rem;
@@ -263,31 +266,37 @@ h5 {
       color: #818a91; }
   .readmorepost .post-tag {
     font-size: 1.4rem;
-    padding: .5rem .8rem;
-    border: .1rem solid #ddd;
+    padding: 0.5rem 0.8rem;
+    border: 0.1rem solid #ddd;
     border-radius: 2rem;
     color: #aaa;
     display: inline-block;
-    margin: 0 .5rem; }
+    margin: 0 0.5rem; }
   .readmorepost .like-btn {
-    padding: .5rem 1rem;
-    border-radius: .6rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.6rem;
     color: #5cb85c;
     border: 0.1rem solid #5cb85c;
     font-size: 1.5rem; }
     .readmorepost .like-btn i {
       font-size: 1rem;
       display: inline-block;
-      margin-right: .5rem; }
+      margin-right: 0.5rem; }
     .readmorepost .like-btn:hover {
       color: #fff;
       background: #5cb85c; }
   .readmorepost #heart-icon {
-    margin-right: .3rem;
+    margin-right: 0.3rem;
     font-size: 1.2rem; }
   .readmorepost .tertiary-btn:hover {
     color: #5cb85c; }
 
+@media screen and (max-width: 768px) {
+  .readmorepost .post-heading {
+    margin: 1.5rem 0; }
+  .readmorepost .post-description {
+    margin: 1rem 0;
+    padding: 0; } }
 .user-form {
   margin: 5rem 0;
   width: 100%;
