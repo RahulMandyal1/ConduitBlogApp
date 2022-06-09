@@ -6,6 +6,7 @@ import dateToNormal from "../utils/helper";
 export default function Comment(props) {
   const comment = props.comment;
   const currentUser = props.currentUser;
+
   return (
     <div className="userinput-container usercomment-container">
       <div className="form-group">{comment.body}</div>
@@ -26,12 +27,13 @@ export default function Comment(props) {
           </span>
           <span> {dateToNormal(comment.createdAt)}</span>
         </figure>
-        {comment.author.username === currentUser.username && (
+        {currentUser && comment.author.username === currentUser.username && (
           <button
             className="delete"
             onClick={(event) => {
               props.deleteComment(event, comment.id);
             }}
+            name="delete"
           >
             <AiFillDelete />
           </button>

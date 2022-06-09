@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export default function NotFound() {
+  
   return (
     <section className="pagenotfoundcontainer center">
       <div className="notfound-container">
@@ -10,7 +11,7 @@ export default function NotFound() {
         <h5> The page you are looking for is not available</h5>
         <div className="center">
           <button className="home-btn">
-              <Link to="/">home</Link>
+            <Link to="/">home</Link>
           </button>
         </div>
       </div>

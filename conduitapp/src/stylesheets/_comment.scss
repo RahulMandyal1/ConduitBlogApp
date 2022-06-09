@@ -67,3 +67,12 @@
 .border-gray{
     border-top: .1rem solid #ddd;
 }
+
+@media screen and (max-width : 768px) {
+    .comment-container{
+        padding: 2rem ;
+        form{
+            width: 100%;
+        }
+    }
+}

@@ -28,25 +28,26 @@ export default class Post extends Component {
 
   render() {
     let post = this.state.article;
-    console.log(post);
     return (
       <article className="readmorepost flex-col">
         <div className="additionalInfo-container flex-row">
           <div className="userinfo-containers flex-row">
             <figure>
-             <Link to={`/profile/${post.author.username}`}>
-             <img
-                src={
-                  post.author.image
-                    ? post.author.image
-                    : "/images/smiley-cyrus.jpg"
-                }
-                alt="userprofile"
-              />
-             </Link>
+              <Link to={`/profile/${post.author.username}`}>
+                <img
+                  src={
+                    post.author.image
+                      ? post.author.image
+                      : "/images/smiley-cyrus.jpg"
+                  }
+                  alt="userprofile"
+                />
+              </Link>
             </figure>
             <div className="username-date">
-              <Link to={`/profile/${post.author.username}`}><h4>{post.author.username}</h4></Link>
+              <Link to={`/profile/${post.author.username}`}>
+                <h4>{post.author.username}</h4>
+              </Link>
               <time>
                 <p className="post-time">{dateToNormal(post.createdAt)}</p>
               </time>
@@ -73,7 +74,12 @@ export default class Post extends Component {
             <Link to={`/article/${post.slug}`}>Readmore....</Link>
           </button>
           <ul className="tags-containers flex-row-center">
-            {post.tagList.length>0 && post.tagList.map(tag=><li className="post-tag" key={tag}>{tag}</li>)}
+            {post.tagList.length > 0 &&
+              post.tagList.map((tag) => (
+                <li className="post-tag" key={tag}>
+                  {tag}
+                </li>
+              ))}
           </ul>
         </div>
       </article>

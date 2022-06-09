@@ -28,6 +28,14 @@
       outline: none;
       border: .1rem solid #719ECE;
     }
+
+    textarea{
+      width: 100% !important;
+      border: .1rem solid #ddd;
+      padding: 1rem;
+      font-weight: $poppins;
+      font-size: 1.6rem;
+    }
   }
   .btn {
     background: $primary;
@@ -36,5 +44,18 @@
     border-radius: 0.6rem;
     border: none;
     font-size: 1.6rem;
+  }
+}
+
+// made responsive this page 
+@media  screen and (max-width: 768px) {
+  .userinput-container{
+    width: 65%;
+  }
+}
+
+@media  screen and (max-width:480px) {
+  .userinput-container{
+    width: 95%;
   }
 }

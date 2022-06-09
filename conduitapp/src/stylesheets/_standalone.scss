@@ -1,0 +1,27 @@
+.logout-btn{
+    padding: 1.2rem 3.2rem;
+    font-weight: 600;
+    background-color: $primary;
+    font-size: 1.8rem;
+    color: #fff;
+    border: none;
+    border-radius: .6rem;
+    font-family: $sanspro;
+}
+.setting-container {
+    position: relative;
+    .logout-btn {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+}
+
+@media screen and (max-width : 768px){
+    .setting-container{
+        .logout-btn{
+            padding: .8rem 1.6rem;
+            font-size: 1.4rem;
+        }
+    }
+}

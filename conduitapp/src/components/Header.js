@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink, Link } from "react-router-dom";
 import { HiUserCircle } from "react-icons/hi";
 import { TbSettings } from "react-icons/tb";
+
 export default function Header(props) {
   const isLoggedIn = props.isLoggedIn;
   return (
@@ -12,9 +13,9 @@ export default function Header(props) {
             Conduit
           </Link>
         </div>
-        <ul className="navmenus-container flex-row-center">
+        <ul className="navmenus-container flex-row-center header-responsive">
           <li>
-            <NavLink to="/" exact activeclassName="activelink">
+            <NavLink to="/" exact  className={({ isActive }) => isActive? "active": ''}>
               Home
             </NavLink>
           </li>
@@ -33,13 +34,13 @@ function LoggedInMenus(props) {
   return (
     <>
       <li>
-        <NavLink to="/article/new" activeclassName="activelink">
+        <NavLink to="/article/new"  className={({ isActive }) => isActive? "active": ''}>
           New Post
         </NavLink>
       </li>
       <li className="flex-row-center">
         <TbSettings />
-        <NavLink to="/settings" activeclassName="activelink">
+        <NavLink to="/settings"  className={({ isActive }) => isActive? "active": ''}>
           Settings
         </NavLink>
       </li>
@@ -47,7 +48,7 @@ function LoggedInMenus(props) {
         <HiUserCircle />
         <NavLink
           to={`/profile/${props.user.username}`}
-          activeClassName="activelink"
+           className={({ isActive }) => isActive? "active": ''}
         >
           {props.user.username}
         </NavLink>
@@ -60,12 +61,12 @@ function NotloggedInMenus() {
   return (
     <>
       <li>
-        <NavLink to="/register" activeclassName="activelink">
+        <NavLink to="/register" className={({ isActive }) => isActive? "active": ''}>
           Signup
         </NavLink>
       </li>
       <li>
-        <NavLink to="/login" activeclassName="activelink">
+        <NavLink to="/login" className={({ isActive }) => isActive? "active": ''}>
           Signin
         </NavLink>
       </li>

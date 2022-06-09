@@ -2,13 +2,10 @@ import React, { Component } from "react";
 import { articlesURL } from "../utils/constant";
 import Loader from "./Loader";
 import withRouter from "../utils/withRouter";
-import { Link } from "react-router-dom";
-import { localStorageKey } from "../utils/constant";
 import Comments from "./Comments";
 import dateToNormal from "../utils/helper";
-const token = localStorage[localStorageKey];
 
-class Singlepost extends Component {
+class Article extends Component {
   state = {
     article: undefined,
     currentUser: this.props.user,
@@ -30,28 +27,7 @@ class Singlepost extends Component {
       });
   }
 
-  deleteArticle = () => {
-    let article = this.props.params.slug;
-    fetch(articlesURL + "/" + article, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: `Token ${token}`,
-      },
-    })
-      .then((res) => {
-        if (res.ok) {
-          return this.props.navigate("/");
-        }
-        return res.json();
-      })
-      .then((data) => {
-        this.props.navigate("/");
-      });
-  };
-
   render() {
-    const currentUser = this.state.currentUser;
     const article = this.state.article;
     if (article === undefined) {
       return <Loader />;
@@ -59,14 +35,10 @@ class Singlepost extends Component {
     return (
       <>
         <section className="singlepost-container">
-          <RenderPost
-            currentUser={currentUser}
-            article={article}
-            deleteArticle={this.deleteArticle}
-          />
+          <RenderPost article={article} />
           <div className="user-form comment-container">
             <div className="container center  border-gray">
-              <Comments currentUser={currentUser} articleUrl={article.slug} />
+              <Comments currentUser={undefined} articleUrl={article.slug} />
             </div>
           </div>
         </section>
@@ -76,9 +48,7 @@ class Singlepost extends Component {
 }
 
 function RenderPost(props) {
-  const currentUser = props.currentUser;
   const article = props.article;
-  const deleteArticle = props.deleteArticle;
   return (
     <>
       <article className="singlepost-wrapper">
@@ -100,26 +70,12 @@ function RenderPost(props) {
                 <div className="username-date">
                   <h4>{article.author.username} </h4>
                   <time>
-                    <p className="post-time">{dateToNormal(article.createdAt)}</p>
+                    <p className="post-time">
+                      {dateToNormal(article.createdAt)}
+                    </p>
                   </time>
                 </div>
-                <div className="button-container">
-                  {currentUser.username === article.author.username && (
-                    <div className="button-container">
-                      <Link to={`/updatearticle/${article.slug}`}>
-                        <button className="secondary-btn edit-btn">
-                          Edit Article
-                        </button>
-                      </Link>
-                      <button
-                        className="secondary-btn delete-btn"
-                        onClick={deleteArticle}
-                      >
-                        Delete Article
-                      </button>
-                    </div>
-                  )}
-                </div>
+                <div className="button-container"></div>
               </div>
             </div>
           </div>
@@ -132,4 +88,4 @@ function RenderPost(props) {
   );
 }
 
-export default withRouter(Singlepost);
+export default withRouter(Article);

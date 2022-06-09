@@ -32,7 +32,6 @@ class Comments extends Component {
 
   createComment = (event) => {
     event.preventDefault();
-    console.log("it is coming insdie to delete the comment");
     const reverseState = this.state.commentcreated;
     const slug = this.state.articleSlug;
     fetch(`${articlesURL}/${slug}/comments`, {
@@ -81,6 +80,22 @@ class Comments extends Component {
 
   render() {
     const currentUser = this.props.currentUser;
+    if (!this.props.currentUser) {
+      if (!this.state.comments) {
+        return <Loader />;
+      }
+      return (
+        <>
+          {this.state.comments.map((comment) => (
+            <Comment
+              comment={comment}
+              deleteComment={this.deleteComment}
+              currentUser={undefined}
+            />
+          ))}
+        </>
+      );
+    }
     if (this.state.comments === null) {
       return <Loader />;
     }

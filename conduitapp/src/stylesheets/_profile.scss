@@ -58,8 +58,32 @@
 
 .navmenus-container {
     .active-menu{
-        border-bottom: .4rem solid $dark-gray;
+        border-bottom: .4rem solid #11446b;
         background-color: $primary;
         color: #fff;
     }   
+}
+
+
+@media screen and (max-width : 768px) {
+    .otherpost-container{
+        padding: 2rem;
+    }
+    .post-description{
+        flex:  1 1 100%;
+        padding: 0 1rem;
+    }
+    .profile-container{
+        .flex-end{
+            justify-content: center;
+            button{
+                margin: 1rem 0 ;
+                padding: .8rem 1.6rem;
+                font-size: 1.2rem;
+            }
+        }
+        .articles-container{
+            flex-wrap: wrap;
+        }
+    }
 }

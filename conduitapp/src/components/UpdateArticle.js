@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { newArticle } from "../utils/constant";
 import { notEmpty } from "../utils/validation";
 import { articlesURL } from "../utils/constant";
 import withRouter from "../utils/withRouter";
@@ -22,6 +21,7 @@ class UpdateArticle extends Component {
       tagList: "",
       requiredall: "",
     },
+    updateError: "",
   };
 
   componentDidMount() {
@@ -42,9 +42,6 @@ class UpdateArticle extends Component {
 
   handleChange = ({ target }) => {
     const { name, value } = target;
-    if (name === "tagList") {
-      value = value.split().map((tag) => tag.trim());
-    }
     // validation for the blog post
     this.setState((previousState) => {
       return {
@@ -66,15 +63,26 @@ class UpdateArticle extends Component {
   updateArticle = (event) => {
     event.preventDefault();
     const slug = this.props.params.slug;
+    const article = this.state.article;
+    article.tagList = article.tagList.split(",");
+    console.log(article.tagList);
     fetch(articlesURL + "/" + slug, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
         authorization: `Token ${token}`,
       },
-      body: JSON.stringify({ article: this.state.article }),
+      body: JSON.stringify({ article: article }),
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          return this.setState({
+            updateError:
+              "Article is not udpated there is a problem from our end",
+          });
+        }
+        return res.json();
+      })
       .then(({ article }) => {
         this.props.navigate(`/article/${article.slug}`);
       });
@@ -82,14 +90,17 @@ class UpdateArticle extends Component {
 
   render() {
     const { title, description, body, tags, requiredall } = this.state.errors;
-    if(!this.state.article.title){
-      return <Loader/>
+    if (!this.state.article.title) {
+      return <Loader />;
     }
     return (
       <section className="form-container container">
         <div className="center user-form">
           <h2 className="section-heading text-center"> Edit post</h2>
           <form className="userinput-container">
+            <div className="form-group">
+              <p className="error text-center">{this.state.updateError}</p>
+            </div>
             <div className="form-group">
               <input
                 placeholder="title"
@@ -121,8 +132,8 @@ class UpdateArticle extends Component {
             <div className="form-group">
               <input
                 placeholder="tags"
-                name="tagsList"
-                value={this.state.article.tags}
+                name="tagList"
+                value={this.state.article.tagList}
                 onChange={this.handleChange}
               />
               <span className="error">{tags}</span>

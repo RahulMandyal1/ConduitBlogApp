@@ -12,7 +12,10 @@ import NewPost from "./NewPost";
 import Setting from "./Setting";
 import Profile from "./Profile";
 import UpdateArticle from "../components/UpdateArticle";
-export default class App extends Component {
+import withRouter from "../utils/withRouter";
+import Article from "./Article";
+
+class App extends Component {
   state = {
     isLoggedIn: false,
     user: undefined,
@@ -48,9 +51,19 @@ export default class App extends Component {
       isLoggedIn: true,
       user: userData,
       isVerified: false,
+      displaynavmenus: true,
     });
     localStorage.setItem(localStorageKey, userData.token);
   };
+
+  logout = () => {
+    this.setState({
+      isLoggedIn: false,
+    });
+    localStorage.clear();
+    this.props.navigate("/");
+  };
+
 
   render() {
     if (this.state.isVerified) {
@@ -58,11 +71,16 @@ export default class App extends Component {
     }
     return (
       <>
-        <Header isLoggedIn={this.state.isLoggedIn} user={this.state.user} />
+        <Header
+          isLoggedIn={this.state.isLoggedIn}
+          user={this.state.user}
+          togglemenus={this.togglemenus}
+        />
         {this.state.isLoggedIn ? (
           <AuthenticatedApp
             updateUser={this.updateUser}
             user={this.state.user}
+            logout={this.logout}
           />
         ) : (
           <UnauthenticatedApp updateUser={this.updateUser} />
@@ -81,7 +99,10 @@ function AuthenticatedApp(props) {
           path="/article/new"
           element={<NewPost token={props.user.token} />}
         />
-        <Route path="/settings" element={<Setting user={props.user} />} />
+        <Route
+          path="/settings"
+          element={<Setting user={props.user} logout={props.logout} />}
+        />
         <Route
           path="/article/:slug"
           element={<Singlepost user={props.user} />}
@@ -110,12 +131,15 @@ function UnauthenticatedApp(props) {
           path="/login"
           element={<Signin updateUser={props.updateUser} />}
         />
+        <Route path="/article/:slug" element={<Article />} />
         <Route
-          path="/article/:slug"
-          element={<Singlepost user={props.user} />}
+          path="/profile/:username"
+          element={<Profile user={undefined} />}
         />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );
 }
+
+export default withRouter(App);

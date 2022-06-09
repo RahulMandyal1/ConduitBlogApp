@@ -6,6 +6,7 @@ import Loader from "./Loader";
 import Pagination from "./Pagination";
 import Posts from "./Posts";
 import Sidebar from "./Sidebar";
+
 export default class Homepage extends Component {
   state = {
     articles: null,
@@ -29,7 +30,6 @@ export default class Homepage extends Component {
       this.fetchData();
     }
   }
-
 
   fetchData = () => {
     let skipPages = (this.state.activePage - 1) * 10;
@@ -80,12 +80,13 @@ export default class Homepage extends Component {
     });
   };
 
+
+
   render() {
-    if(this.state.articles===null){
-      return <Loader/>
+    if (this.state.articles === null) {
+      return <Loader />;
     }
     let { articles, error, totalArticles, activePage, activeTab } = this.state;
-    console.log(" this is the article page and these are all teh article s" , this.state.articles);
     return (
       <section className="hero">
         <Bannar />

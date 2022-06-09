@@ -22,7 +22,7 @@ class Profile extends Component {
 
   //on update it will only run if user articles is not fetched
   componentDidUpdate() {
-    if (!this.state.articles ) {
+    if (!this.state.articles) {
       this.getProfileArticles();
     }
   }
@@ -33,7 +33,6 @@ class Profile extends Component {
     fetch(profileURL + username)
       .then((res) => res.json())
       .then((user) => {
-        console.log(user);
         this.setState({
           profile: user.profile,
           isfollowing: user.profile.following,
@@ -127,14 +126,14 @@ class Profile extends Component {
             <li
               onClick={this.handleClick}
               id="author"
-              className={"author" === tab && "active-menu"}
+              className={"author" === tab ? "active-menu" : ""}
             >
               My Articles
             </li>
             <li
               onClick={this.handleClick}
               id="favorited"
-              className={"favorited" === tab && "active-menu"}
+              className={"favorited" === tab ? "active-menu" : ""}
             >
               Favourited Articles
             </li>

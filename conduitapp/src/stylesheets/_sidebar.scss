@@ -11,12 +11,22 @@
         font-size: 1.4rem;
         padding: .3rem .5rem ;
         border-radius: 1rem;
-        background: #687077;
+        background: $light-gray;
         margin: .2rem;
-        a{
-            color: #fff;
-        }
+        background-color:$dark-gray;
+        color: #fff;
     }
 }
 
 
+
+// made responsive this page
+@media screen and (max-width: 992px) {
+    .sidebar-container{
+        padding: 1rem;
+        li{
+            margin: .5rem;
+        }
+    }
+}
+  

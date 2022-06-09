@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Loader from "./Loader";
 import { lengthValidation } from "../utils/validation";
 import { validateEmail } from "../utils/validation";
 import { userURL } from "../utils/constant";
@@ -21,6 +20,7 @@ class Setting extends Component {
       password: "",
     },
     isLoggedIn: true,
+    updateError: "",
   };
 
   handleChange = ({ target }) => {
@@ -66,35 +66,42 @@ class Setting extends Component {
     event.preventDefault();
     const { username, email, bio, image, password } = this.state;
     let storageKey = localStorage[localStorageKey];
-
     fetch(userURL, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
         authorization: `Token ${storageKey}`,
       },
-      body: JSON.stringify({ user: { username, email, bio, image, password } }),
+      body: JSON.stringify({
+        user: { username, email, bio, image, password },
+      }),
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          return this.setState({
+            updateError: "profile is not udpated please try again",
+          });
+        }
+        return res.json();
+      })
       .then(({ user }) => {
         this.props.navigate("/");
       });
-  };
-
-  logout = () => {
-    localStorage.clear();
-    this.setState({
-      isLoggedIn: false,
-    });
   };
 
   render() {
     const { email, password, image, bio, username } = this.state.errors;
     return (
       <section className="form-container container">
-        <div className="user-form center">
+        <div className="user-form center setting-container">
           <h2 className="section-heading text-center">Update your profile</h2>
           <form className="userinput-container">
+            <button className="btn logout-btn" onClick={this.props.logout}>
+              logout
+            </button>
+            <div className="form-group">
+              <p className="error text-center">{this.state.updateError}</p>
+            </div>
             <div className="form-group">
               <input
                 placeholder="URL of profile picture"
@@ -151,10 +158,6 @@ class Setting extends Component {
             </div>
           </form>
         </div>
-
-        <button className="btn logout-btn" onClick={this.logout}>
-          logout
-        </button>
       </section>
     );
   }

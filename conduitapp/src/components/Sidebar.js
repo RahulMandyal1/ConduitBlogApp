@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { tagsURL } from "../utils/constant";
 import Loader from "./Loader";
+
 export default class Sidebar extends Component {
   state = {
     tagsData: null,
@@ -41,7 +42,7 @@ export default class Sidebar extends Component {
         ) : (
           <ul className="tags-container">
             {tagsData.tags.map((tag) => {
-              return <li key={tag} onClick={this.props.activetab}>{tag}</li>;
+              return <li key={tag} onClick={this.props.getTagArticles}>{tag}</li>;
             })}
           </ul>
         )}

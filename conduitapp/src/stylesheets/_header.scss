@@ -33,10 +33,41 @@
 }
 
 
+.hamburg-container{
+  svg{
+    font-size: 2rem;
+    display: none;
+  }
+}
 
+.none{
+  display: none;
+}
+
+
+.inline-block{
+  display: inline-block;
+}
 // made responsive this page
 @media screen and (max-width: 992px) {
   .navigation-container{
     padding: 2rem;
   }
 }
+
+@media screen and (max-width: 450px) {
+  .logo-container{
+    flex:  1 1 100%;
+  }
+  .navmenus-container{
+    flex :  1 1 100%;
+    margin: 1rem 0;
+  }
+  header{
+    nav{
+      flex-direction:column;
+    }
+  }
+}
+
+
