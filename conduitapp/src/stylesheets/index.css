@@ -5,7 +5,8 @@
   font-size: "Poppins", sans-serif; }
 
 html {
-  font-size: 62.5%; }
+  font-size: 62.5%;
+  scroll-behavior: smooth; }
 
 section {
   padding: 0 11%; }
@@ -73,6 +74,14 @@ h5 {
   background-color: #5cb85c;
   color: #fff;
   font-weight: 600; }
+
+.btn:hover {
+  background-color: #1b9b1b;
+  color: #fff; }
+
+.secondary-btn:hover {
+  background-color: #1b9b1b;
+  color: #fff; }
 
 @media screen and (max-width: 992px) {
   html {
@@ -204,7 +213,8 @@ h5 {
     .content-container .user-feed-container li {
       display: inline-block;
       margin-right: 2.4rem;
-      font-size: 1.5rem; }
+      font-size: 1.5rem;
+      cursor: pointer; }
 
 .pagination-container {
   margin: 2rem 0; }
@@ -264,6 +274,8 @@ h5 {
     margin: 1rem 0; }
     .readmorepost button a {
       color: #818a91; }
+      .readmorepost button a:hover {
+        color: #5cb85c; }
   .readmorepost .post-tag {
     font-size: 1.4rem;
     padding: 0.5rem 0.8rem;
@@ -358,7 +370,11 @@ h5 {
     background: #aaa;
     margin: .2rem;
     background-color: #818a91;
-    color: #fff; }
+    color: #fff;
+    cursor: pointer; }
+    .tags-container li:hover {
+      background-color: #5cb85c;
+      color: #fff; }
 
 @media screen and (max-width: 992px) {
   .sidebar-container {
@@ -608,6 +624,8 @@ h5 {
     position: absolute;
     right: 0;
     top: 0; }
+    .setting-container .logout-btn:hover {
+      background-color: #1b9b1b; }
 
 @media screen and (max-width: 768px) {
   .setting-container .logout-btn {

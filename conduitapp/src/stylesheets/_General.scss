@@ -3,6 +3,7 @@
   padding: 0px;
   box-sizing: border-box;
   font-size: "Poppins", sans-serif;
+  // transition: all .1s ease-in-out;
 }
 
 // all the color palletes used in this whole project
@@ -21,6 +22,7 @@ $sanspro: "Source Sans Pro", sans-serif;
 
 html {
   font-size: 62.5%;
+  scroll-behavior: smooth;
 }
 
 section {
@@ -104,6 +106,14 @@ h5 {
   font-weight: 600;
 }
 
+.btn:hover{
+  background-color: #1b9b1b;
+  color: #fff;
+}
+.secondary-btn:hover{
+  background-color: #1b9b1b;
+  color: #fff;
+}
 
 // made responsive this page 
 @media  screen and (max-width: 992px) {

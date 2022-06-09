@@ -36,6 +36,9 @@
     margin: 1rem 0;
     a {
       color: $dark-gray;
+      &:hover{
+          color: $primary;
+      }
     }
   }
   .post-tag {

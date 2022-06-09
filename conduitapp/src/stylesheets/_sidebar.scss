@@ -15,6 +15,11 @@
         margin: .2rem;
         background-color:$dark-gray;
         color: #fff;
+        cursor: pointer;
+        &:hover{
+            background-color: $primary;
+            color: #fff;
+        }
     }
 }
 
