@@ -73,26 +73,10 @@ export default class Post extends Component {
             <Link to={`/article/${post.slug}`}>Readmore....</Link>
           </button>
           <ul className="tags-containers flex-row-center">
-            {post.tagList.length>0 && post.tagList.map(tag=><li className="post-tag">{tag}</li>)}
+            {post.tagList.length>0 && post.tagList.map(tag=><li className="post-tag" key={tag}>{tag}</li>)}
           </ul>
         </div>
-<<<<<<< Updated upstream
-      </div>
-      <h2 className="post-heading">{post.title}</h2>
-      <p className="post-description">{post.description}</p>
-      <div className="readmore-tags flex-row">
-        <button className="tertiary-btn">
-          <Link to={"/article/" + post.slug}>Readmore....</Link>
-        </button>
-        <ul className="tags-containers">
-          <li className="post-tag">pubg</li>
-        </ul>
-      </div>
-    </article>
-  );
-=======
       </article>
     );
   }
->>>>>>> Stashed changes
 }

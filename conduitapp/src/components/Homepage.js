@@ -2,65 +2,97 @@ import React, { Component } from "react";
 import { articlesURL } from "../utils/constant";
 import Bannar from "./Bannar";
 import FeedNav from "./FeedNav";
+import Loader from "./Loader";
+import Pagination from "./Pagination";
 import Posts from "./Posts";
 import Sidebar from "./Sidebar";
-
-
 export default class Homepage extends Component {
   state = {
     articles: null,
     tags: null,
-    feed: "/articles",
     error: "",
     totalArticles: "",
-    activePage: "",
+    activePage: 1,
+    activeTab: "",
   };
 
   // for the first go after render it will change our state
   componentDidMount() {
-    this.fetch();
+    this.fetchData();
   }
 
-  fetch=()=>{
-    fetch(articlesURL + `?offset=${this.state.skipPages}?limit=10`)
-    .then((res) => {
-      if (!res.ok) {
-        throw new Error(res.statusText);
-      }
-      return res.json();
-    })
-    .then((data) => {
-      this.setState({
-        articles: data,
-        totalArticles: data.articlesCount,
-      });
-    })
-    .catch((error) => {
-      this.setState({
-        error: "something went wrong not able to fetch",
-      });
-    });
+  componentDidUpdate(previousProps, previousState) {
+    if (
+      previousState.activePage !== this.state.activePage ||
+      previousState.activeTab !== this.state.activeTab
+    ) {
+      this.fetchData();
+    }
   }
+
+
+  fetchData = () => {
+    let skipPages = (this.state.activePage - 1) * 10;
+    let limit = 10;
+    const tag = this.state.activeTab;
+    fetch(
+      articlesURL +
+        `?offset=${skipPages}&limit=${limit}` +
+        (tag && `&tag=${tag}`)
+    )
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(res.statusText);
+        }
+        return res.json();
+      })
+      .then((data) => {
+        this.setState({
+          articles: data,
+          totalArticles: data.articlesCount,
+        });
+      })
+      .catch((error) => {
+        this.setState({
+          error: "something went wrong not able to fetch",
+        });
+      });
+  };
+
+  // get next article page
+  getNextPage = ({ target }) => {
+    let value = target.innerText;
+    this.setState({
+      activePage: Number(value),
+    });
+  };
+
+  getTagRelatedArticles = ({ target }) => {
+    const value = target.innerText;
+    this.setState({
+      activeTab: value,
+    });
+  };
+
+  emptyTab = () => {
+    this.setState({
+      activeTab: "",
+    });
+  };
 
   render() {
-    let { articles, error } = this.state;
+    if(this.state.articles===null){
+      return <Loader/>
+    }
+    let { articles, error, totalArticles, activePage, activeTab } = this.state;
+    console.log(" this is the article page and these are all teh article s" , this.state.articles);
     return (
       <section className="hero">
         <Bannar />
-        {/* <FeedNav feed={this.state.feed} /> */}
         <div className="content-container flex-row">
-<<<<<<< Updated upstream
-          <Posts articles={articles} error={error} />
-          <aside className="sidebar-container">
-            <Sidebar />
-          </aside>
-=======
           <div className="articles-container">
             <FeedNav activeTab={activeTab} emptyTab={this.emptyTab} />
-            <Posts
-              data={articles}
-              error={error}
-            />
+            <Posts data={articles} error={error} />
             <Pagination
               totalArticles={totalArticles}
               activePage={activePage}
@@ -68,7 +100,6 @@ export default class Homepage extends Component {
             />
           </div>
           <Sidebar getTagArticles={this.getTagRelatedArticles} />
->>>>>>> Stashed changes
         </div>
       </section>
     );

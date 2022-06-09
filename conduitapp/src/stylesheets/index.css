@@ -54,7 +54,7 @@ ul {
           flex-direction: column;
 }
 
-.center {
+.center, .pagination-container span {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -83,13 +83,8 @@ a {
   text-decoration: none;
 }
 
-<<<<<<< Updated upstream
-.active-menu {
-  color: #5cb85c;
-=======
 .error {
   color: #c30d0d;
->>>>>>> Stashed changes
 }
 
 .text-center {
@@ -179,15 +174,9 @@ h5 {
   color: #aaa;
 }
 
-<<<<<<< Updated upstream
-.navigation-container .active-menu {
-  color: #5cb85c;
-  font-weight: 500;
-=======
 .navmenus-container .active {
   color: #687087 !important;
   font-weight: 600;
->>>>>>> Stashed changes
 }
 
 @media screen and (max-width: 992px) {
@@ -296,8 +285,6 @@ h5 {
   font-size: 1.5rem;
 }
 
-<<<<<<< Updated upstream
-=======
 .pagination-container {
   margin: 2rem 0;
 }
@@ -329,7 +316,6 @@ h5 {
   }
 }
 
->>>>>>> Stashed changes
 .readmorepost {
   padding: 3rem 0;
   border-bottom: .1rem solid #ddd;
@@ -498,8 +484,26 @@ h5 {
 .tags-container li a {
   color: #fff;
 }
-<<<<<<< Updated upstream
-=======
+
+.singlepost-container {
+  width: 100%;
+  padding: 0;
+}
+
+.singlepost-container .articlebody-container {
+  padding: 0 11%;
+  margin: 2rem 0;
+}
+
+.singlepost-container .articlebody-container p {
+  font-size: 1.8rem;
+}
+
+.article-bannar-container {
+  padding: 4% 11%;
+  background: #333333;
+  color: #fff;
+}
 
 .article-bannar-container .article-bannar h2 {
   font-size: 4rem;
@@ -746,5 +750,4 @@ h5 {
 .border-gray {
   border-top: .1rem solid #ddd;
 }
->>>>>>> Stashed changes
 /*# sourceMappingURL=index.css.map */

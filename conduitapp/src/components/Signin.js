@@ -1,40 +1,18 @@
-<<<<<<< Updated upstream
-import React from "react";
-export default function Signin() {
-  return (
-    <section className="form-container container">
-      <div className=" center user-form">
-        <header>
-          <h1 className="text-center">Sign In</h1>
-          <h5 className="text-center">Need an account?</h5>
-        </header>
-        <form className="userinput-container">
-          <div className="form-group">
-            <input placeholder="Email" />
-          </div>
-          <div className="form-group">
-            <input placeholder="password" />
-          </div>
-          <div className="flex-end">
-            <button className="btn">Sign in</button>
-          </div>
-        </form>
-      </div>
-    </section>
-  );
-=======
 import React, { Component } from "react";
-import { loginURL } from "../utils/constant";
 import { lengthValidation } from "../utils/validation";
 import  {validateEmail } from "../utils/validation";
+import { signupURL } from "../utils/constant";
 import withRouter from "../utils/withRouter";
-class Signin extends Component {
+
+class Signup extends Component {
   state = {
     email: "",
     password: "",
+    username: "",
     errors: {
-      email: "",
+      username: "",
       password: "",
+      email: "",
     },
   };
 
@@ -50,64 +28,80 @@ class Signin extends Component {
     }
     //validate   the password
     if (name === "password") {
-      console.log(value);
       this.setState({
         errors: {
           password: lengthValidation(name, value),
         },
       });
     }
-
+    //validate  username
+    if (name === "username") {
+      this.setState({
+        errors: {
+          username: lengthValidation(name, value),
+        },
+      });
+    }
     this.setState({
       [name]: value,
     });
   };
 
+  //  resposible for user login
   handleSubmit = (event) => {
     event.preventDefault();
     let { username, password, email } = this.state;
-    fetch(loginURL, {
+    console.log(username, password, email);
+    fetch(signupURL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ user: { email, password } }),
+      body: JSON.stringify({ user: { username, email, password } }),
     })
       .then((res) => {
         if (!res.ok) {
           return res.json().then((data) => {
+            console.log(data);
             return Promise.reject(data);
           });
         }
         return res.json();
       })
-      .then(({ user }) => {
-        this.props.updateUser(user);
+      .then((data) => {
+        this.props.updateUser(data.user);
+        this.setState({ email: "", username: "", password: "" });
         this.props.history.push("/");
       })
-      .catch((error) => {
-        this.setState((previousState) => {
-          return {
-            ...previousState,
-            errors: {
-              ...previousState.errors,
-              email: "email or password is incorrect !!",
-            },
-          };
+      .catch((data) => {
+        this.setState({
+          errors: {
+            username: data.errors.username,
+            email: data.errors.email,
+          },
         });
       });
   };
 
   render() {
-    const { email, password } = this.state.errors;
+    const { username, email, password } = this.state.errors;
     return (
       <section className="form-container container">
         <div className=" center user-form">
           <header>
-            <h1 className="text-center">Sign In</h1>
-            <h5 className="text-center">Need an account?</h5>
+            <h1 className="text-center">Sign up</h1>
+            <h5 className="text-center">Have an account?</h5>
           </header>
           <form className="userinput-container">
+            <div className="form-group">
+              <input
+                placeholder="Username"
+                name="username"
+                value={this.state.username}
+                onChange={this.handleChange}
+              />
+              <span className="error">{username}</span>
+            </div>
             <div className="form-group">
               <input
                 placeholder="Email"
@@ -129,10 +123,10 @@ class Signin extends Component {
             <div className="flex-end">
               <button
                 className="btn"
-                disabled={email || password}
+                disabled={password || username || email}
                 onClick={this.handleSubmit}
               >
-                Sign in
+                Sign up
               </button>
             </div>
           </form>
@@ -140,5 +134,6 @@ class Signin extends Component {
       </section>
     );
   }
->>>>>>> Stashed changes
 }
+
+export default withRouter(Signup);

@@ -1,5 +1,4 @@
 import React from "react";
-import { TbSettings } from "react-icons/tb";
 import { Link } from "react-router-dom";
 
 export default function ProfileBannar(props) {
