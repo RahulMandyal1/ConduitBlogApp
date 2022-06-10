@@ -18,6 +18,16 @@ body {
 ul {
   list-style: none; }
 
+input:focus {
+  outline: none !important;
+  border-color: #719ECE;
+  box-shadow: 0 0 .4rem #719ECE; }
+
+textarea:focus {
+  outline: none !important;
+  border-color: #719ECE;
+  box-shadow: 0 0 .4rem #719ECE; }
+
 .flex-row {
   display: flex;
   justify-content: space-between; }
@@ -183,7 +193,7 @@ h5 {
   padding: 0; }
 
 .hero-bannar {
-  padding: 4rem 0;
+  padding: 5.5rem 0;
   background: #5cb85c;
   color: #fff;
   font-family: "Titillium Web", sans-serif; }

@@ -12,11 +12,17 @@ class Comments extends Component {
     comments: null,
     articleSlug: this.props.articleUrl,
     body: "",
-    commentcreated: false,
+    commentsChange: false,
   };
 
   componentDidMount() {
     this.getComments();
+  }
+
+  componentDidUpdate(previousprops, previousState) {
+    if (previousState.commentsChange !== this.state.commentsChange) {
+      this.getComments();
+    }
   }
 
   getComments = () => {
@@ -24,15 +30,18 @@ class Comments extends Component {
     fetch(articlesURL + `/${slug}/comments`)
       .then((res) => res.json())
       .then(({ comments }) => {
-        this.setState({
-          comments: comments,
+        this.setState((previousState) => {
+          return {
+            ...previousState,
+            comments: comments,
+          };
         });
       });
   };
 
   createComment = (event) => {
     event.preventDefault();
-    const reverseState = this.state.commentcreated;
+    const reverseState = this.state.commentsChange;
     const slug = this.state.articleSlug;
     fetch(`${articlesURL}/${slug}/comments`, {
       method: "POST",
@@ -44,19 +53,15 @@ class Comments extends Component {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        this.setState(
-          {
-            commentcreated: !reverseState,
-          },
-          this.getComments
-        );
+        this.setState({
+          commentsChange: !reverseState,
+        });
       });
   };
 
   deleteComment = (event, id) => {
     event.preventDefault();
-    const reverseState = this.state.commentcreated;
+    const reverseState = this.state.commentsChange;
     const slug = this.state.articleSlug;
     fetch(`${articlesURL}/${slug}/comments/${id}`, {
       method: "DELETE",
@@ -67,7 +72,9 @@ class Comments extends Component {
     })
       .then((res) => res.json())
       .then((data) => {
-        this.getComments();
+        this.setState({
+          commentsChange: !reverseState,
+        });
       });
   };
 
@@ -89,6 +96,7 @@ class Comments extends Component {
           {this.state.comments.map((comment) => (
             <Comment
               comment={comment}
+              key={comment.id}
               deleteComment={this.deleteComment}
               currentUser={undefined}
             />
@@ -122,6 +130,7 @@ class Comments extends Component {
             comment={comment}
             deleteComment={this.deleteComment}
             currentUser={this.props.currentUser}
+            key={comment.id}
           />
         ))}
       </>

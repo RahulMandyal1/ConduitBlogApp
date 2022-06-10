@@ -9,6 +9,7 @@
 // all the color palletes used in this whole project
 $primary: #5cb85c;
 // $primary : #138666;
+// $primary : #1ABC9C;
 $secondary: #f3f3f3;
 $light-dark: rgba(0, 0, 0, 0.3);
 $light-gray: #aaa;
@@ -36,6 +37,18 @@ body {
 
 ul{
   list-style: none;
+}
+
+input:focus { 
+  outline: none !important;
+  border-color: #719ECE;
+  box-shadow:   0 0 .4rem #719ECE;
+}
+
+textarea:focus{
+  outline: none !important;
+  border-color: #719ECE;
+  box-shadow:   0 0 .4rem #719ECE;
 }
 //  all the common used classes in this whole project
 .flex-row {
