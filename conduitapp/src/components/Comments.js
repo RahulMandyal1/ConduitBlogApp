@@ -59,23 +59,27 @@ class Comments extends Component {
       });
   };
 
-  deleteComment = (event, id) => {
-    event.preventDefault();
+  deleteComment = (event ,id) => {
+    // event.preventDefault();
     const reverseState = this.state.commentsChange;
     const slug = this.state.articleSlug;
+    console.log(" this is inside delete");
     fetch(`${articlesURL}/${slug}/comments/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
         authorization: `Token ${token}`,
       },
-    })
-      .then((res) => res.json())
-      .then((data) => {
+    }).then((res) => {
+      if (res.ok) {
         this.setState({
           commentsChange: !reverseState,
         });
-      });
+      }
+      return res.json();
+    }).catch((err)=>{
+      console.log("there is a error",err);
+    })
   };
 
   handleChange = ({ target }) => {

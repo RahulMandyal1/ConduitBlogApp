@@ -31,7 +31,8 @@ export default function Comment(props) {
           <button
             className="delete"
             onClick={(event) => {
-              props.deleteComment(event, comment.id);
+              
+              props.deleteComment(event,comment.id);
             }}
             name="delete"
           >
