@@ -4,8 +4,11 @@ import { loginURL } from "../utils/constant";
 import { lengthValidation } from "../utils/validation";
 import { validateEmail } from "../utils/validation";
 import withRouter from "../utils/withRouter";
+import { dataContext } from "./BlogContext";
 
 class Signin extends Component {
+  static contextType = dataContext;
+  
   state = {
     email: "",
     password: "",
@@ -59,7 +62,7 @@ class Signin extends Component {
         return res.json();
       })
       .then(({ user }) => {
-        this.props.updateUser(user);
+        this.context.updateUser(user);
         this.props.navigate("/");
       })
       .catch((error) => {
@@ -82,7 +85,11 @@ class Signin extends Component {
         <div className=" center user-form">
           <header>
             <h1 className="text-center">Sign In</h1>
-            <h5 className="text-center"><Link to="/register" className="primary-color">Need an account?</Link></h5>
+            <h5 className="text-center">
+              <Link to="/register" className="primary-color">
+                Need an account?
+              </Link>
+            </h5>
           </header>
           <form className="userinput-container">
             <div className="form-group">

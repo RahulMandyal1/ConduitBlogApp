@@ -37,7 +37,7 @@ function UserActions(props) {
   const currentUser = props.currentUser;
   const username = articleUser.username;
 
-  if (articleUser.username !== currentUser.username) {
+  if (articleUser.username !== currentUser.username && currentUser) {
     return (
       <button
         className="btn-secondary follow"

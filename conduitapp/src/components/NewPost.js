@@ -2,8 +2,12 @@ import React, { Component } from "react";
 import { newArticle } from "../utils/constant";
 import { notEmpty } from "../utils/validation";
 import withRouter from "../utils/withRouter";
+import { dataContext } from "./BlogContext";
+
 
 class NewPost extends Component {
+  static contextType = dataContext;
+  
   state = {
     article: {
       title: "",
@@ -20,7 +24,9 @@ class NewPost extends Component {
     },
   };
 
+
   handleChange = ({ target }) => {
+
     const { name, value } = target;
     // validation for the blog post
     this.setState((previousState) => {
@@ -49,6 +55,8 @@ class NewPost extends Component {
     if (article.tagList) {
       article.tagList = article.tagList.split(",");
     }
+
+    console.log("this is the article that is going to create",article);
     // all the fields all required
     if (!title || !description || !body || !tagList) {
       return this.setState({
@@ -62,7 +70,7 @@ class NewPost extends Component {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        authorization: `Token ${this.props.token}`,
+        authorization: `Token ${this.context.user.token}`,
       },
       body: JSON.stringify({ article: article }),
     })

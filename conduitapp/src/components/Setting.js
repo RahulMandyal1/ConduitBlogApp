@@ -4,16 +4,18 @@ import { validateEmail } from "../utils/validation";
 import { userURL } from "../utils/constant";
 import { localStorageKey } from "../utils/constant";
 import withRouter from "../utils/withRouter";
+import { dataContext } from "./BlogContext";
 
 
 
 class Setting extends Component {
+  static contextType = dataContext
   state = {
-    username: this.props.user.username,
-    image: this.props.user.image || "",
-    bio: this.props.user.bio || " ",
-    email: this.props.user.email,
-    password: this.props.user.password,
+    username: this.context.user.username,
+    image: this.context.user.image || "",
+    bio: this.context.user.bio || " ",
+    email: this.context.user.email,
+    password: this.context.user.password,
     errors: {
       username: "",
       image: "",
@@ -25,9 +27,10 @@ class Setting extends Component {
     updateError: "",
   };
 
+  
   handleChange = ({ target }) => {
     const { name, value } = target;
-
+    
     //validate user email
     if (name === "email") {
       this.setState({
@@ -98,7 +101,7 @@ class Setting extends Component {
         <div className="user-form center setting-container">
           <h2 className="section-heading text-center">Update your profile</h2>
           <form className="userinput-container">
-            <button className="btn logout-btn" onClick={this.props.logout}>
+            <button className="btn logout-btn" onClick={this.context.logout}>
               logout
             </button>
             <div className="form-group">

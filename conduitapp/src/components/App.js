@@ -14,11 +14,12 @@ import Profile from "./Profile";
 import UpdateArticle from "../components/UpdateArticle";
 import withRouter from "../utils/withRouter";
 import Article from "./Article";
+import { dataContext } from "./BlogContext";
 
 class App extends Component {
   state = {
     isLoggedIn: false,
-    user: undefined,
+    user: null,
     isVerified: true,
   };
 
@@ -64,11 +65,18 @@ class App extends Component {
     this.props.navigate("/");
   };
 
-
   render() {
+    // send this data in the context to all the  components
+    const data = {
+      ...this.state,
+      updateUser: this.updateUser,
+      logout: this.logout,
+    };
+
     if (this.state.isVerified) {
       return <Fullpagespinner />;
     }
+    
     return (
       <>
         <Header
@@ -77,13 +85,13 @@ class App extends Component {
           togglemenus={this.togglemenus}
         />
         {this.state.isLoggedIn ? (
-          <AuthenticatedApp
-            updateUser={this.updateUser}
-            user={this.state.user}
-            logout={this.logout}
-          />
+          <dataContext.Provider value={data}>
+            <AuthenticatedApp />
+          </dataContext.Provider>
         ) : (
-          <UnauthenticatedApp updateUser={this.updateUser} />
+          <dataContext.Provider value={data}>
+            <UnauthenticatedApp updateUser={this.updateUser} />
+          </dataContext.Provider>
         )}
       </>
     );
@@ -95,23 +103,11 @@ function AuthenticatedApp(props) {
     <>
       <Routes>
         <Route path="/" exact element={<Homepage />} />
-        <Route
-          path="/article/new"
-          element={<NewPost token={props.user.token} />}
-        />
-        <Route
-          path="/settings"
-          element={<Setting user={props.user} logout={props.logout} />}
-        />
-        <Route
-          path="/article/:slug"
-          element={<Singlepost user={props.user} />}
-        />
+        <Route path="/article/new" element={<NewPost />} />
+        <Route path="/settings" element={<Setting />} />
+        <Route path="/article/:slug" element={<Singlepost />} />
         <Route path="/updatearticle/:slug" element={<UpdateArticle />} />
-        <Route
-          path="/profile/:username"
-          element={<Profile user={props.user} />}
-        />
+        <Route path="/profile/:username" element={<Profile />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>
@@ -123,19 +119,10 @@ function UnauthenticatedApp(props) {
     <>
       <Routes>
         <Route path="/" exact element={<Homepage />} />
-        <Route
-          path="/register"
-          element={<Signup updateUser={props.updateUser} />}
-        />
-        <Route
-          path="/login"
-          element={<Signin updateUser={props.updateUser} />}
-        />
+        <Route path="/register" element={<Signup />} />
+        <Route path="/login" element={<Signin />} />
         <Route path="/article/:slug" element={<Article />} />
-        <Route
-          path="/profile/:username"
-          element={<Profile user={undefined} />}
-        />
+        <Route path="/profile/:username" element={<Profile />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

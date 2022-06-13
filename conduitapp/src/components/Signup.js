@@ -4,8 +4,11 @@ import { validateEmail } from "../utils/validation";
 import { signupURL } from "../utils/constant";
 import withRouter from "../utils/withRouter";
 import { Link } from "react-router-dom";
+import { dataContext } from "./BlogContext";
 
 class Signup extends Component {
+  static contextType = dataContext;
+
   state = {
     email: "",
     password: "",
@@ -71,7 +74,7 @@ class Signup extends Component {
         return res.json();
       })
       .then((data) => {
-        this.props.updateUser(data.user);
+        this.context.updateUser(data.user);
         this.setState({ email: "", username: "", password: "" });
         this.props.navigate("/");
       })

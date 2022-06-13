@@ -6,12 +6,14 @@ import { Link } from "react-router-dom";
 import { localStorageKey } from "../utils/constant";
 import Comments from "./Comments";
 import dateToNormal from "../utils/helper";
+import { dataContext } from "./BlogContext";
 const token = localStorage[localStorageKey];
 
 class Singlepost extends Component {
+  static contextType = dataContext
   state = {
-    article: undefined,
-    currentUser: this.props.user,
+    article: null,
+    currentUser: this.context.user,
   };
 
   // get article as soon as component is mounted 
@@ -55,7 +57,7 @@ class Singlepost extends Component {
   render() {
     const currentUser = this.state.currentUser;
     const article = this.state.article;
-    if (article === undefined) {
+    if (!article) {
       return <Loader />;
     }
     return (

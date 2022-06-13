@@ -5,13 +5,15 @@ import Posts from "./Posts";
 import Loader from "./Loader";
 import withRouter from "../utils/withRouter";
 import { localStorageKey } from "../utils/constant";
+import { dataContext } from "./BlogContext";
 const token = localStorage[localStorageKey];
 
 class Profile extends Component {
+  static contextType = dataContext;
   state = {
     tab: "author",
     profile: null,
-    currentuser: this.props.user,
+    currentuser: this.context.user,
     articles: null,
     isfollowing: null,
   };
