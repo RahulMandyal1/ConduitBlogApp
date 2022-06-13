@@ -5,6 +5,7 @@ import Loader from "./Loader";
 import Comment from "./Comment";
 import { localStorageKey } from "../utils/constant";
 import withRouter from "../utils/withRouter";
+import { Link } from "react-router-dom";
 const token = localStorage[localStorageKey];
 
 class Comments extends Component {
@@ -19,7 +20,7 @@ class Comments extends Component {
     this.getComments();
   }
 
-  componentDidUpdate(previousprops, previousState) {
+  componentDidUpdate(_previousProps, previousState) {
     if (previousState.commentsChange !== this.state.commentsChange) {
       this.getComments();
     }
@@ -59,7 +60,7 @@ class Comments extends Component {
       });
   };
 
-  deleteComment = (event ,id) => {
+  deleteComment = (_event ,id) => {
     // event.preventDefault();
     const reverseState = this.state.commentsChange;
     const slug = this.state.articleSlug;
@@ -97,6 +98,7 @@ class Comments extends Component {
       }
       return (
         <>
+        <p className="text-center notloggedinuser">please <Link to="/register">register</Link> or <Link to="/login">login</Link> to create a comment</p>
           {this.state.comments.map((comment) => (
             <Comment
               comment={comment}

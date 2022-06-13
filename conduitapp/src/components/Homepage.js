@@ -22,7 +22,7 @@ export default class Homepage extends Component {
     this.fetchData();
   }
 
-  componentDidUpdate(previousProps, previousState) {
+  componentDidUpdate(_previousProps, previousState) {
     if (
       previousState.activePage !== this.state.activePage ||
       previousState.activeTab !== this.state.activeTab

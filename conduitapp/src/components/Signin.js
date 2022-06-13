@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { loginURL } from "../utils/constant";
 import { lengthValidation } from "../utils/validation";
 import { validateEmail } from "../utils/validation";
@@ -81,7 +82,7 @@ class Signin extends Component {
         <div className=" center user-form">
           <header>
             <h1 className="text-center">Sign In</h1>
-            <h5 className="text-center">Need an account?</h5>
+            <h5 className="text-center"><Link to="/register" className="primary-color">Need an account?</Link></h5>
           </header>
           <form className="userinput-container">
             <div className="form-group">

@@ -43,7 +43,13 @@ export default class Sidebar extends Component {
         ) : (
           <ul className="tags-container">
             {tagsData.tags.map((tag) => {
-              return <li key={tag} onClick={this.props.getTagArticles}>{tag}</li>;
+              if (tag !== "") {
+                return (
+                  <li key={tag} onClick={this.props.getTagArticles}>
+                    {tag}
+                  </li>
+                );
+              }
             })}
           </ul>
         )}

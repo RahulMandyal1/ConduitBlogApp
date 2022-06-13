@@ -3,6 +3,7 @@ import { lengthValidation } from "../utils/validation";
 import { validateEmail } from "../utils/validation";
 import { signupURL } from "../utils/constant";
 import withRouter from "../utils/withRouter";
+import { Link } from "react-router-dom";
 
 class Signup extends Component {
   state = {
@@ -91,7 +92,7 @@ class Signup extends Component {
         <div className=" center user-form">
           <header>
             <h1 className="text-center">Sign up</h1>
-            <h5 className="text-center">Have an account?</h5>
+            <h5 className="text-center"><Link to="/login" className="primary-color">Have an account?</Link></h5>
           </header>
           <form className="userinput-container">
             <div className="form-group">

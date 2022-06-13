@@ -7,7 +7,7 @@ import dateToNormal from "../utils/helper";
 
 class Article extends Component {
   state = {
-    article: undefined,
+    article: null,
     currentUser: this.props.user,
   };
 
@@ -29,7 +29,7 @@ class Article extends Component {
 
   render() {
     const article = this.state.article;
-    if (article === undefined) {
+    if (!article) {
       return <Loader />;
     }
     return (
