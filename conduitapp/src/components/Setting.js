@@ -95,7 +95,7 @@ class Setting extends Component {
   };
 
   render() {
-    const { email, password, image, bio, username } = this.state.errors;
+    const { email, password, image,bio, username } = this.state.errors;
     return (
       <section className="form-container container">
         <div className="user-form center setting-container">
@@ -112,7 +112,7 @@ class Setting extends Component {
                 placeholder="URL of profile picture"
                 name="image"
                 onChange={this.handleChange}
-                value={this.state.image}
+                value={image}
               />
             </div>
             <div className="form-group">

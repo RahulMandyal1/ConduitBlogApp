@@ -8,7 +8,7 @@ import { dataContext } from "./BlogContext";
 
 class Signin extends Component {
   static contextType = dataContext;
-  
+
   state = {
     email: "",
     password: "",
@@ -45,7 +45,7 @@ class Signin extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    let { username, password, email } = this.state;
+    let { password, email } = this.state;
     fetch(loginURL, {
       method: "POST",
       headers: {
