@@ -1,20 +1,39 @@
 # Blogapp
 <img src="https://rahulmandyal.me/images/blogapp.png">
 
-- It is a blog application, where users can create account,
-- access, write, delete, update, like blogs, and more.
-- This app is having all essential functionalities of blog app.
+
+# Functionality Overview 
+
+The example application is a social blogging site (i.e. a Medium.com clone) called "Conduit". It uses a custom API for all requests, including authentication. You can view a live demo over at https://conduitblogapp.netlify.app/
 
 
-User can Perform opreations like :
+**General functionality:**
 
--  A Autheticated blog user can create  an article 
--  User can delete article 
--  User can favourite an post created by another user .
--  User can also comment on any post created by another user .
--  User can udpate his profile 
+- Authenticate users via JWT (login/signup pages + logout button on settings page)
+- CRU* users (sign up & settings page - no deleting required)
+- CRUD Articles
+- CR*D Comments on articles (no updating required)
+- GET and display paginated lists of articles
+- Favorite articles
+- Follow other users
+
+**The general page breakdown looks like this:**
+
+- Home page (URL: /#/ )
+    - List of tags
+    - List of articles pulled from  Global, or by Tag
+    - Pagination for list of articles
+- Sign in/Sign up pages (URL: /login, /register )
+    - Use JWT (store the token in localStorage)
+- Settings page (URL: /settings )
+- Editor page to create/edit articles (URL: /article/new, /article/article-slug-here )
+- Article page (URL: /article/article-slug-here )
+    - Delete article button (only shown to article's author)
+    - Render markdown from server client side
+    - Comments section at bottom of page
+    - Delete comment button (only shown to comment's author)
+- Profile page (URL: /profile/@username)
+    - Show basic user info
+    - List of articles populated from author's created articles or author's favorited articles
 
 
-Non Authenticated User have given few authorization 
-
-- A non authenticated user can only read an article .
