@@ -1,4 +1,6 @@
 # Blogapp
+<img src="https://rahulmandyal.me/images/blogapp.png">
+
 - It is a blog application, where users can create account,
 - access, write, delete, update, like blogs, and more.
 - This app is having all essential functionalities of blog app.
