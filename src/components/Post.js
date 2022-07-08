@@ -4,14 +4,15 @@ import { BsFillSuitHeartFill } from "react-icons/bs";
 import { localStorageKey } from "../utils/constant";
 import { articlesURL } from "../utils/constant";
 import dateToNormal from "../utils/helper";
+import { dataContext } from "./BlogContext";
 const token = localStorage[localStorageKey];
 
 export default class Post extends Component {
+  static contextType = dataContext;
   state = {
     article: this.props.article,
   };
 
-  
   increaseLike = (event, slug) => {
     fetch(articlesURL + `/${slug}/favorite`, {
       method: "POST",
@@ -54,19 +55,24 @@ export default class Post extends Component {
               </time>
             </div>
           </div>
-          <div className="likes-container">
-            <button
-              className="like-btn flex-row-center"
-              onClick={(event) => {
-                this.increaseLike(event, post.slug);
-              }}
-            >
-              <span id="heart-icon">
-                <BsFillSuitHeartFill />
-              </span>
-              <span>{post.favoritesCount}</span>
-            </button>
-          </div>
+
+          {/* {if the user is already present then only show the like button} */}
+
+          {this.context.user && (
+            <div className="likes-container">
+              <button
+                className="like-btn flex-row-center"
+                onClick={(event) => {
+                  this.increaseLike(event, post.slug);
+                }}
+              >
+                <span id="heart-icon">
+                  <BsFillSuitHeartFill />
+                </span>
+                <span>{post.favoritesCount}</span>
+              </button>
+            </div>
+          )}
         </div>
         <h2 className="post-heading">{post.title}</h2>
         <p className="post-description">{post.description}</p>
